@@ -1,72 +1,72 @@
 <div id="app" class="pushable">
-		<div class="ui sidebar inverted vertical menu visible fixed left">
-			<div class="ui logo item">
-				<b><i class="icon tasks purple"></i>Task Manager</b>
-			</div>
-			<div class="item">
-				<div class="ui message green">
-					Use this tool to manage your todo tasks
-				</div>
-			</div>
-			<div class="item" v-if="message">
-				<div class="ui message blue">
-					<i class="icon info"></i> {{ message }}
-				</div>
+	<div class="ui sidebar inverted vertical menu visible fixed left">
+		<div class="ui logo item">
+			<b><i class="icon tasks purple"></i>Task Manager</b>
+		</div>
+		<div class="item">
+			<div class="ui message green">
+				Use this tool to manage your todo tasks
 			</div>
 		</div>
-		<div class="ui container pusher">
-			<div class="ui grid">
-				<div class="six wide column">
-					<div id="todo" class="tasklist">
-						<div class="ui header">
-							<i class="icon play circle orange"></i>In Progress Tasks ({{ todoTasks.length }})
-						</div>
-						<task 
-							v-bind:task="task" 
-							v-for="task in todoTasks" />
-					</div>
-					<div id="completed" class="tasklist">
-						<div class="ui header">
-							<i class="icon check circle green"></i>Completed Tasks ({{ completedTasks.length }})
-						</div>
-						<task 
-							v-bind:task="task" 
-							v-for="task in completedTasks" />
-					</div>
-				</div>
-				<div class="six wide column">
-					<div id="editor" class="details ui raise segment purple">
-						<div class="ui header grid">
-							<div class="left floated nine wide column">
-								<i class="icon edit violet"></i>Details
-							</div>
-							<div class="right floated five wide column">
-								<button class="ui green button right float" v-on:click="clear">
-									<i class="icon plus circle"></i>New
-								</button>
-							</div>
-						</div>
-						<div class="ui segment">
-							<form class="ui form" 
-							v-on:submit.prevent="(action == 'create') ? createTask($event) : updateTask($event, task.id)">
-								<input type="hidden" name="id" v-model="task.id" />
-								<div class="field">
-									<label>Name</label>
-									<input type="text" name="name" placeholder="Name" required="true" v-model="task.name" />
-								</div>
-								<div class="field">
-									<label>Description</label>
-									<input type="text" name="description" placeholder="Description" required="true" v-model="task.description" />
-								</div>
-								<div class="field inline">
-									<label>Completed</label>
-									<input type="checkbox" name="completed" v-model="task.completed">
-								</div>
-								<button class="ui button green">Submit</button>
-							</form>
-						</div>
-					</div>
-		        </div>
+		<div class="item" v-if="message">
+			<div class="ui message blue">
+				<i class="icon info"></i> {{ message }}
 			</div>
 		</div>
 	</div>
+	<div class="ui container pusher">
+		<div class="ui grid">
+			<div class="six wide column">
+				<div id="todo" class="tasklist">
+					<div class="ui header">
+						<i class="icon play circle orange"></i>In Progress Tasks ({{ todoTasks.length }})
+					</div>
+					<task 
+						v-bind:task="task" 
+						v-for="task in todoTasks" />
+				</div>
+				<div id="completed" class="tasklist">
+					<div class="ui header">
+						<i class="icon check circle green"></i>Completed Tasks ({{ completedTasks.length }})
+					</div>
+					<task 
+						v-bind:task="task" 
+						v-for="task in completedTasks" />
+				</div>
+			</div>
+			<div class="six wide column">
+				<div id="editor" class="details ui raise segment purple">
+					<div class="ui header grid">
+						<div class="left floated nine wide column">
+							<i class="icon edit violet"></i>Details
+						</div>
+						<div class="right floated five wide column">
+							<button class="ui green button right float" v-on:click="clear">
+								<i class="icon plus circle"></i>New
+							</button>
+						</div>
+					</div>
+					<div class="ui segment">
+						<form class="ui form" 
+						v-on:submit.prevent="(action == 'create') ? createTask($event) : updateTask($event, task.id)">
+							<input type="hidden" name="id" v-model="task.id" />
+							<div class="field">
+								<label>Name</label>
+								<input type="text" name="name" placeholder="Name" required="true" v-model="task.name" />
+							</div>
+							<div class="field">
+								<label>Description</label>									
+								<input type="text" name="description" placeholder="Description" required="true" v-model="task.description" />
+							</div>
+							<div class="field inline">
+								<label>Completed</label>
+								<input type="checkbox" name="completed" v-model="task.completed">
+							</div>
+							<button class="ui button green">Submit</button>
+						</form>
+					</div>
+				</div>
+		    </div>
+		</div>
+	</div>
+</div>
