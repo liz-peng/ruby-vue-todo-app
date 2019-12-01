@@ -33,3 +33,13 @@ export function updateTask(task) {
 			console.log(error);
 		})
 }
+
+export function deleteTask(task_id) {
+	return axios.delete(`/tasks/${task_id}.json`)
+		.then(function(response) {
+			return 'success';
+		})
+		.catch(function(error) {
+			console.log(error);
+		})
+}
