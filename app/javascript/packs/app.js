@@ -9,19 +9,29 @@ document.addEventListener("DOMContentLoaded", () => {
 			'task': {
 				props: ['task'],
 				template: `
-					<div class="ui segment task" v-bind:class="task.completed ? 'done' : 'todo'">
-						<div class="ui grid">
-							<div class="left floated twelve wide column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="task" v-on:click="$parent.toggleDone($event, task.id)" :checked="task.completed">
-									<label>{{ task.name }} <span class="description">{{ task.description }}</span></label>
-								</div>
-							</div>
-							<div class="right floated three wide column">
-								<i class="icon pencil blue" alt="Edit" v-on:click="$parent.editTask($event, task.id)"></i>
-								<i class="icon trash red" alt="Delete" v-on:click="$parent.deleteTask($event, task.id)"></i>
-							</div>
-						</div>
+					<div class="ui cards" v-bind:class="task.completed ? 'done' : 'todo'">
+					  	<div class="card">
+						    <div class="content">
+						    	<img class="right floated mini ui">
+						      	<div class="header">
+						        	{{ task.name }}
+						      	</div>
+						      	<div class="description">
+						      		<input type="checkbox" name="task" v-on:click="$parent.toggleDone($event, task.id)" :checked="task.completed">
+						        	<label>{{ task.description }}</label>
+						      	</div>
+						    </div>
+						    <div class="extra content">
+						      	<div class="ui two buttons">
+		        					<div class="ui basic blue button" v-on:click="$parent.editTask($event, task.id)">
+		        						<i alt="Edit" class="icon pencil blue"></i>Edit
+		        					</div>
+		        					<div class="ui basic red button" v-on:click="$parent.deleteTask($event, task.id)">
+		        						<i alt="Delete" class="icon trash red"></i>Delete
+		        					</div>
+						      	</div>
+						    </div>
+					  	</div>
 					</div>
 				`
 			}
