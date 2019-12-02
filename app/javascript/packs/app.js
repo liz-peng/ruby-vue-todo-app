@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			clear: function() {
 				this.task = {};
 				this.action = 'create';
-				this.message = '';
+				// this.message = '';
 			},
 			toggleDone: function(event, id) {
 				event.stopImmediatePropagation();
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						app.listTasks();
 						app.clear();
 						let status = response.completed ? 'completed' : 'in progress';
-						app.message = `Task ${response.id} is ${status}.`;
+						// app.message = `Task ${response.id} is ${status}.`;
 					})
 				}
 			},
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				Api.createTask(this.task).then(function(response) {
 					app.listTasks();
 					app.clear();
-					app.message = `Task ${response.id} created.`;
+					// app.message = `Task ${response.id} created.`;
 				})
 			},
 			editTask: function(event, id) {
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				Api.updateTask(this.task).then(function(response) {
 					app.listTasks();
 					app.clear();
-					app.message = `Task ${response.id} updated.`;
+					// app.message = `Task ${response.id} updated.`;
 				})
 			},
 			deleteTask: function(event, id) {
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				if(taskIndex > -1) {
 					Api.deleteTask(id).then(function(response) {
 						app.$delete(app.tasks, taskIndex);
-						app.message = `Task ${id} deleted.`;
+						// app.message = `Task ${id} deleted.`;
 					});
 				}
 			}
