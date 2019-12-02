@@ -1,6 +1,4 @@
-# README
-
-TODO task manager application.
+# Task Manager Application
 
 [Link to the app](http://todo-task-manager-app.herokuapp.com)
 
