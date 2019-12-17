@@ -1,22 +1,18 @@
-import { shallowMount } from '@vue/test-utils';
-import App from 'app'; 
-let wrapper;
-
-beforeEach(() => {
-    wrapper = shallowMount(App, {
-        propsData: {},
-        mocks: {},
-        stubs: {},
-        methods: {},
-    });
-});
-
-afterEach(() => {
-    wrapper.destroy();
-});
+import { mount } from '@vue/test-utils'
+import App from 'packs/app.js'
 
 describe('App', () => {
-    test('is a Vue instance', () => {
-        expect(wrapper.isVueInstance).toBeTruthy();
-    });
-});
+  const wrapper = mount(App)
+  
+  it('has a checkbox', () => {
+    expect(wrapper.contains('input[type="checkbox"]')).toBe(true)
+  })
+
+  it('toggle the checkbox', () => {
+    expect(wrapper.vm.task.completed).toBe(true)
+    const checkbox = wrapper.find('input[type="checkbox"]')
+    checkbox.trigger('click')
+    expect(wrapper.vm.task.completed).toBe(false)
+  })
+})
+
