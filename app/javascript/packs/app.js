@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				// this.message = '';
 			},
 			toggleDone: function(event, id) {
-				event.preventDefault();
 				event.stopImmediatePropagation();
 				let task = this.tasks.find(item => item.id == id);
 				if(task) {
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					Api.updateTask(this.task).then(function(response) {
 						app.listTasks();
 						app.clear();
-						let status = response.completed ? 'completed' : 'in progress';
+						// let status = response.completed ? 'completed' : 'in progress';
 						// app.message = `Task ${response.id} is ${status}.`;
 					})
 				}
