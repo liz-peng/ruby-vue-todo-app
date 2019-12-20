@@ -1,18 +1,20 @@
 import { mount } from '@vue/test-utils'
-import App from 'packs/app.js'
+import App from 'packs/test.vue'
 
 describe('App', () => {
   const wrapper = mount(App)
   
-  it('has a checkbox', () => {
+  it('has checkbox', () => {
     expect(wrapper.contains('input[type="checkbox"]')).toBe(true)
   })
 
-  it('toggle the checkbox', () => {
-    expect(wrapper.vm.task.completed).toBe(true)
+  it('change todo/done status after click the checkbox', async () => {
+    expect(wrapper.vm.task.completed).toBe(true) // task is done
     const checkbox = wrapper.find('input[type="checkbox"]')
     checkbox.trigger('click')
+    await wrapper.vm.$forceUpdate();
     expect(wrapper.vm.task.completed).toBe(false)
+    expect(wrapper.html()).toContain('<div class="todo">') // task moves to todo
   })
 })
 

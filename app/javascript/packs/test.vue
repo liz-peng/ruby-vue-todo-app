@@ -17,15 +17,11 @@
 export default {
   data () {
     return {
-      // task: {
-	     //  name: "Test 1",
-	     //  description: "Test 1",
-	     //  completed: true
-      // }
-      task: [
-      	{name: "Test 1", description:"Test 1", completed: true}, 
-      	{name: "Test 2", description:"Test 2", completed: true}
-      ]
+      task: {
+	      name: "Test 1",
+	      description: "Test 1",
+	      completed: true
+      }
     }
 	},
 	methods: {

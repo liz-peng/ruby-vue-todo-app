@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				// this.message = '';
 			},
 			toggleDone: function(event, id) {
-				event.preventDefault();
 				event.stopImmediatePropagation();
 				let task = this.tasks.find(item => item.id == id);
 				if(task) {
