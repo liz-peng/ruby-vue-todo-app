@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					Api.updateTask(this.task).then(function(response) {
 						app.listTasks();
 						app.clear();
-						// let status = response.completed ? 'completed' : 'in progress';
+						let status = response.completed ? 'completed' : 'in progress';
 						// app.message = `Task ${response.id} is ${status}.`;
 					})
 				}
@@ -131,37 +131,3 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	})
 });
-
-export default {
-  template: `
-    <div v-bind:class="task.completed ? 'done' : 'todo'">
-		<div class="card">
-			<div class="content">
-				<div class="header">
-					{{ task.name }}
-				</div>
-				<div class="description">
-					<input type="checkbox" name="task" @click="toggleDone" :checked="task.completed">
-					<label>{{ task.description }}</label>
-				</div>
-			</div>
-		</div>
-	</div>
-  `,
-
-  data () {
-    return {
-      task: {
-      	name: "Test 1",
-      	description: "Test 1",
-      	completed: true
-      }
-    }
-  },
-
-  methods: {
-    toggleDone() {
-		this.task.completed = !this.task.completed;
-	}
-  }
-}
