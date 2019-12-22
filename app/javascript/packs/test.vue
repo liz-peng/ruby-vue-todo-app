@@ -1,13 +1,16 @@
 <template>
-	<div v-bind:class="task.completed ? 'done' : 'todo'">
-		<div class="card">
-			<div class="content">
-				<div class="header">
-					{{ task.name }}
-				</div>
-				<div class="description">
-					<input type="checkbox" name="task" @click="toggleDone" :checked="task.completed">
-					<label>{{ task.description }}</label>
+	<div>
+		<div v-for="task in tasks" class="ui cards" v-bind:class="task.completed ? 'done' : 'todo'">
+			<div class="card">
+				<div class="content">
+					<img class="right floated mini ui">
+					<div class="header">
+						{{ task.name }}
+					</div>
+					<div class="description">
+						<input type="checkbox" name="task" v-on:click="toggleDone($event, task)" :checked="task.completed">
+						<label>{{ task.description }}</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -17,16 +20,15 @@
 export default {
   data () {
     return {
-      task: {
-	      name: "Test 1",
-	      description: "Test 1",
-	      completed: true
-      }
+      tasks: [
+      	{ name: "test1", description: "Test 1", completed: true }, 
+      	{ name: "test2", description: "Test 2", completed: true }
+      ]
     }
 	},
 	methods: {
-	  toggleDone() {
-			this.task.completed = !this.task.completed;
+	  toggleDone (event, task) {
+			task.completed = !task.completed;
 		}
 	}
 }
