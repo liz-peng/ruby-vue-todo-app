@@ -1,6 +1,8 @@
 # Task Manager Application
 
-[Link to the app](http://todo-task-manager-app.herokuapp.com)
+[Link to the app](http://todo-task-manager-app.herokuapp.com) 
+
+The app deployed on Heroku
 
 Ruby 2.6.3
 
